@@ -39,8 +39,8 @@ import re
 
 from httpx import Response
 
-from crawlers.utils.logger import logger
-from crawlers.utils.api_exceptions import (
+from douyin_scraper.utils.logger import logger
+from douyin_scraper.utils.api_exceptions import (
     APIError,
     APIConnectionError,
     APIResponseError,

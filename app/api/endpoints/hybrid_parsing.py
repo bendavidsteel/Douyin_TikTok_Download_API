@@ -5,7 +5,7 @@ from fastapi import APIRouter, Body, Query, Request, HTTPException  # 导入Fast
 from app.api.models.APIResponseModel import ResponseModel, ErrorResponseModel  # 导入响应模型
 
 # 爬虫/Crawler
-from crawlers.hybrid.hybrid_crawler import HybridCrawler  # 导入混合爬虫
+from douyin_scraper.hybrid.hybrid_crawler import HybridCrawler  # 导入混合爬虫
 
 HybridCrawler = HybridCrawler()  # 实例化混合爬虫
 

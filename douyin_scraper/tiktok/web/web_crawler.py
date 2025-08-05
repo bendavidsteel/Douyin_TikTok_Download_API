@@ -39,12 +39,12 @@ import yaml  # 配置文件
 import os  # 系统操作
 
 # 基础爬虫客户端和TikTokAPI端点
-from crawlers.base_crawler import BaseCrawler
-from crawlers.tiktok.web.endpoints import TikTokAPIEndpoints
-from crawlers.utils.utils import extract_valid_urls
+from douyin_scraper.base_crawler import BaseCrawler
+from douyin_scraper.tiktok.web.endpoints import TikTokAPIEndpoints
+from douyin_scraper.utils.utils import extract_valid_urls
 
 # TikTok加密参数生成器
-from crawlers.tiktok.web.utils import (
+from douyin_scraper.tiktok.web.utils import (
     AwemeIdFetcher,
     BogusManager,
     SecUserIdFetcher,
@@ -52,7 +52,7 @@ from crawlers.tiktok.web.utils import (
 )
 
 # TikTok接口数据请求模型
-from crawlers.tiktok.web.models import (
+from douyin_scraper.tiktok.web.models import (
     UserProfile,
     UserPost,
     UserLike,

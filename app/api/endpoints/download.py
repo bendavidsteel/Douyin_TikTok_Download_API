@@ -8,7 +8,7 @@ from fastapi import APIRouter, Request, Query, HTTPException  # 导入FastAPI组
 from starlette.responses import FileResponse
 
 from app.api.models.APIResponseModel import ErrorResponseModel  # 导入响应模型
-from crawlers.hybrid.hybrid_crawler import HybridCrawler  # 导入混合数据爬虫
+from douyin_scraper.hybrid.hybrid_crawler import HybridCrawler  # 导入混合数据爬虫
 
 router = APIRouter()
 HybridCrawler = HybridCrawler()

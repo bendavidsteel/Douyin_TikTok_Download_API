@@ -3,7 +3,7 @@ from typing import List
 from fastapi import APIRouter, Body, Query, Request, HTTPException  # 导入FastAPI组件
 from app.api.models.APIResponseModel import ResponseModel, ErrorResponseModel  # 导入响应模型
 
-from crawlers.douyin.web.web_crawler import DouyinWebCrawler  # 导入抖音Web爬虫
+from douyin_scraper.douyin.web.web_crawler import DouyinWebCrawler  # 导入抖音Web爬虫
 
 
 router = APIRouter()

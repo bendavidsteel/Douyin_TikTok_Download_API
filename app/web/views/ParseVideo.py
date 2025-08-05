@@ -9,7 +9,7 @@ from pywebio_battery import put_video
 
 from app.web.views.ViewsUtils import ViewsUtils
 
-from crawlers.hybrid.hybrid_crawler import HybridCrawler
+from douyin_scraper.hybrid.hybrid_crawler import HybridCrawler
 
 HybridCrawler = HybridCrawler()
 

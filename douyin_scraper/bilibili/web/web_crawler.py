@@ -38,12 +38,12 @@ import time  # 时间操作
 import yaml  # 配置文件
 
 # 基础爬虫客户端和哔哩哔哩API端点
-from crawlers.base_crawler import BaseCrawler
-from crawlers.bilibili.web.endpoints import BilibiliAPIEndpoints
+from douyin_scraper.base_crawler import BaseCrawler
+from douyin_scraper.bilibili.web.endpoints import BilibiliAPIEndpoints
 # 哔哩哔哩工具类
-from crawlers.bilibili.web.utils import EndpointGenerator, bv2av, ResponseAnalyzer
+from douyin_scraper.bilibili.web.utils import EndpointGenerator, bv2av, ResponseAnalyzer
 # 数据请求模型
-from crawlers.bilibili.web.models import UserPostVideos, UserProfile, ComPopular, UserDynamic, PlayUrl
+from douyin_scraper.bilibili.web.models import UserPostVideos, UserProfile, ComPopular, UserDynamic, PlayUrl
 
 # 配置文件路径
 path = os.path.abspath(os.path.dirname(__file__))

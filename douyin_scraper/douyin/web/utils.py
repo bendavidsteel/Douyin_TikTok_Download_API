@@ -47,10 +47,10 @@ import httpx
 import qrcode
 import yaml
 
-from crawlers.douyin.web.xbogus import XBogus as XB
-from crawlers.douyin.web.abogus import ABogus as AB
+from douyin_scraper.douyin.web.xbogus import XBogus as XB
+from douyin_scraper.douyin.web.abogus import ABogus as AB
 
-from crawlers.utils.api_exceptions import (
+from douyin_scraper.utils.api_exceptions import (
     APIError,
     APIConnectionError,
     APIResponseError,
@@ -58,8 +58,8 @@ from crawlers.utils.api_exceptions import (
     APIUnauthorizedError,
     APINotFoundError,
 )
-from crawlers.utils.logger import logger
-from crawlers.utils.utils import (
+from douyin_scraper.utils.logger import logger
+from douyin_scraper.utils.utils import (
     gen_random_str,
     get_timestamp,
     extract_valid_urls,

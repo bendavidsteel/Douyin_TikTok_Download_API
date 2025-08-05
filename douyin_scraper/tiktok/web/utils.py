@@ -8,15 +8,15 @@ import asyncio
 from typing import Union
 from pathlib import Path
 
-from crawlers.utils.logger import logger
-from crawlers.douyin.web.xbogus import XBogus as XB
-from crawlers.utils.utils import (
+from douyin_scraper.utils.logger import logger
+from douyin_scraper.douyin.web.xbogus import XBogus as XB
+from douyin_scraper.utils.utils import (
     gen_random_str,
     get_timestamp,
     extract_valid_urls,
     split_filename,
 )
-from crawlers.utils.api_exceptions import (
+from douyin_scraper.utils.api_exceptions import (
     APIError,
     APIConnectionError,
     APIResponseError,

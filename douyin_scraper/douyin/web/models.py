@@ -1,7 +1,7 @@
 from typing import Any, List
 from pydantic import BaseModel, Field
 
-from crawlers.douyin.web.utils import TokenManager, VerifyFpManager
+from douyin_scraper.douyin.web.utils import TokenManager, VerifyFpManager
 
 
 # Base Model

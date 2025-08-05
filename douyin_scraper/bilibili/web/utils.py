@@ -1,7 +1,7 @@
 from urllib.parse import urlencode
-from crawlers.bilibili.web import wrid
-from crawlers.utils.logger import logger
-from crawlers.bilibili.web.endpoints import BilibiliAPIEndpoints
+from douyin_scraper.bilibili.web import wrid
+from douyin_scraper.utils.logger import logger
+from douyin_scraper.bilibili.web.endpoints import BilibiliAPIEndpoints
 
 
 class EndpointGenerator:

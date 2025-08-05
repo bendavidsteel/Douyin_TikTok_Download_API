@@ -40,17 +40,17 @@ from urllib.parse import urlencode, quote  # URL编码
 import yaml  # 配置文件
 
 # 基础爬虫客户端和抖音API端点
-from crawlers.base_crawler import BaseCrawler
-from crawlers.douyin.web.endpoints import DouyinAPIEndpoints
+from douyin_scraper.base_crawler import BaseCrawler
+from douyin_scraper.douyin.web.endpoints import DouyinAPIEndpoints
 # 抖音接口数据请求模型
-from crawlers.douyin.web.models import (
+from douyin_scraper.douyin.web.models import (
     BaseRequestModel, LiveRoomRanking, PostComments,
     PostCommentsReply, PostDetail,
     UserProfile, UserCollection, UserLike, UserLive,
     UserLive2, UserMix, UserPost
 )
 # 抖音应用的工具类
-from crawlers.douyin.web.utils import (AwemeIdFetcher,  # Aweme ID获取
+from douyin_scraper.douyin.web.utils import (AwemeIdFetcher,  # Aweme ID获取
                                        BogusManager,  # XBogus管理
                                        SecUserIdFetcher,  # 安全用户ID获取
                                        TokenManager,  # 令牌管理
@@ -105,6 +105,29 @@ class DouyinWebCrawler:
             params_dict["msToken"] = ''
             a_bogus = BogusManager.ab_model_2_endpoint(params_dict, kwargs["headers"]["User-Agent"])
             endpoint = f"{DouyinAPIEndpoints.POST_DETAIL}?{urlencode(params_dict)}&a_bogus={a_bogus}"
+
+            response = await crawler.fetch_get_json(endpoint)
+        return response
+
+    async def fetch_related_videos(self, aweme_id: str):
+        # 获取抖音的实时Cookie
+        kwargs = await self.get_douyin_headers()
+        # 创建一个基础爬虫
+        base_crawler = BaseCrawler(proxies=kwargs["proxies"], crawler_headers=kwargs["headers"])
+        async with base_crawler as crawler:
+            # 创建一个作品详情的BaseModel参数
+            params = PostDetail(aweme_id=aweme_id)
+            # 生成一个作品详情的带有加密参数的Endpoint
+            # 2024年6月12日22:41:44 由于XBogus加密已经失效，所以不再使用XBogus加密参数，转移至a_bogus加密参数。
+            # endpoint = BogusManager.xb_model_2_endpoint(
+            #     DouyinAPIEndpoints.POST_DETAIL, params.dict(), kwargs["headers"]["User-Agent"]
+            # )
+
+            # 生成一个作品详情的带有a_bogus加密参数的Endpoint
+            params_dict = params.dict()
+            params_dict["msToken"] = ''
+            a_bogus = BogusManager.ab_model_2_endpoint(params_dict, kwargs["headers"]["User-Agent"])
+            endpoint = f"{DouyinAPIEndpoints.POST_RELATED}?{urlencode(params_dict)}&a_bogus={a_bogus}"
 
             response = await crawler.fetch_get_json(endpoint)
         return response

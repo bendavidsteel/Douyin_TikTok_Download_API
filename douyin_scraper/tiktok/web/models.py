@@ -2,8 +2,8 @@ from typing import Any
 from pydantic import BaseModel
 from urllib.parse import quote, unquote
 
-from crawlers.tiktok.web.utils import TokenManager
-from crawlers.utils.utils import get_timestamp
+from douyin_scraper.tiktok.web.utils import TokenManager
+from douyin_scraper.utils.utils import get_timestamp
 
 
 # Model
