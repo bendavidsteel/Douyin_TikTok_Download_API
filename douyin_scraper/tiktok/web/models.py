@@ -123,6 +123,14 @@ class UserMix(BaseRequestModel):
 class PostDetail(BaseRequestModel):
     itemId: str
 
+class PostRelated(BaseRequestModel):
+    itemID: str
+    CategoryType: int = 114
+    count: int = 30
+    cursor: int = 0
+    coverFormat: int = 2
+    isNonPersonalized: bool = False
+
 
 class PostComment(BaseRequestModel):
     aweme_id: str

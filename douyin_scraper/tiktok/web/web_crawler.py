@@ -60,6 +60,7 @@ from douyin_scraper.tiktok.web.models import (
     UserCollect,
     PostDetail,
     UserPlayList,
+    PostRelated,
     PostComment,
     PostCommentReply,
     UserFans,
@@ -111,6 +112,22 @@ class TikTokWebCrawler:
             )
             response = await crawler.fetch_get_json(endpoint)
         return response
+    
+    async def fetch_related_videos(self, itemId: str, count: int = 30):
+        # 获取TikTok的实时Cookie
+        kwargs = await self.get_tiktok_headers()
+        # 创建一个基础爬虫
+        base_crawler = BaseCrawler(proxies=kwargs["proxies"], crawler_headers=kwargs["headers"])
+        async with base_crawler as crawler:
+            # 创建一个作品详情的BaseModel参数
+            params = PostRelated(itemID=itemId)
+            # 生成一个作品详情的带有加密参数的Endpoint
+            endpoint = BogusManager.model_2_endpoint(
+                TikTokAPIEndpoints.POST_RELATED, params.dict(), kwargs["headers"]["User-Agent"]
+            )
+            response = await crawler.fetch_get_json(endpoint)
+        return response
+
 
     # 获取用户的个人信息
     async def fetch_user_profile(self, secUid: str, uniqueId: str):
@@ -140,7 +157,7 @@ class TikTokWebCrawler:
             params = UserPost(secUid=secUid, cursor=cursor, count=count, coverFormat=coverFormat)
             # 生成一个用户作品的带有加密参数的Endpoint
             endpoint = BogusManager.model_2_endpoint(
-                TikTokAPIEndpoints.USER_POST, params.dict(), kwargs["headers"]["User-Agent"]
+                TikTokAPIEndpoints.POST_RELATED, params.dict(), kwargs["headers"]["User-Agent"]
             )
             response = await crawler.fetch_get_json(endpoint)
         return response

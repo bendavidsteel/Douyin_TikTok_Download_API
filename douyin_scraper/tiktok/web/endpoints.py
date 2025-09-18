@@ -48,5 +48,7 @@ class TikTokAPIEndpoints:
     # 作品评论 (Post Comment)
     POST_COMMENT = f"{TIKTOK_DOMAIN}/api/comment/list/"
 
+    POST_RELATED = f"{TIKTOK_DOMAIN}/api/related/item_list/"
+
     # 作品评论回复 (Post Comment Reply)
     POST_COMMENT_REPLY = f"{TIKTOK_DOMAIN}/api/comment/list/reply/"
