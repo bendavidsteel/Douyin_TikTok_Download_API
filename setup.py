@@ -7,5 +7,5 @@ setup(
    author='Man Foo',
    author_email='foomail@foo.example',
    packages=['douyin_scraper'],  #same as name
-   install_requires=['gmssl'], #external packages as dependencies
+   install_requires=['gmssl', 'browser-cookie3'], #external packages as dependencies
 )
