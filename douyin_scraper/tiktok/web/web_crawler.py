@@ -113,6 +113,13 @@ class TikTokWebCrawler:
             response = await crawler.fetch_get_json(endpoint)
         return response
     
+    async def fetch_video_bytes(self, url: str):
+        kwargs = await self.get_tiktok_headers()
+        base_crawler = BaseCrawler(proxies=kwargs["proxies"], crawler_headers=kwargs["headers"])
+        async with base_crawler as crawler:
+            response = await crawler.fetch_response(url)
+        return response
+
     async def fetch_related_videos(self, itemId: str, count: int = 30):
         # 获取TikTok的实时Cookie
         kwargs = await self.get_tiktok_headers()

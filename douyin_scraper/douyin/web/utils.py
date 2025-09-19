@@ -106,7 +106,7 @@ class TokenManager:
         }
 
         transport = httpx.HTTPTransport(retries=5)
-        with httpx.Client(transport=transport, proxies=cls.proxies) as client:
+        with httpx.Client(transport=transport, mounts=cls.proxies) as client:
             try:
                 response = client.post(
                     cls.token_conf["url"], content=payload, headers=headers
